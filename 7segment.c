@@ -91,3 +91,56 @@ void delay_ms(unsigned int i)
         }
     }
 }
+
+
+//===================================================================================
+//HOPE
+#include <reg51.h>
+
+#define seven_segment_data P1
+
+sbit disp1_sel = P0^3;
+sbit disp2_sel = P0^2;
+sbit disp3_sel = P0^1;
+sbit disp4_sel = P0^0;
+
+void delay_ms(unsigned int);
+
+void main(void)
+{
+    while(1)
+    {
+        disp1_sel = 0;
+        seven_segment_data = 0x76;   // H
+        delay_ms(2);
+        disp1_sel = 1;
+
+        disp2_sel = 0;
+        seven_segment_data = 0x3F;   // O
+        delay_ms(2);
+        disp2_sel = 1;
+
+        disp3_sel = 0;
+        seven_segment_data = 0x73;   // P
+        delay_ms(2);
+        disp3_sel = 1;
+
+        disp4_sel = 0;
+        seven_segment_data = 0x79;   // E
+        delay_ms(2);
+        disp4_sel = 1;
+    }
+}
+
+void delay_ms(unsigned int i)
+{
+    unsigned int j;
+
+    while(i-- > 0)
+    {
+        for(j = 0; j < 500; j++)
+        {
+            ;
+        }
+    }
+}
