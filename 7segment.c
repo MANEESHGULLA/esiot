@@ -12,14 +12,13 @@ void delay_ms(unsigned int);
 
 void main(void)
 {
-    unsigned char count0 = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+    unsigned char count0=0,count1=0,count2=0,count3=0,count4=0;
 
-    unsigned char bcd_code[] = 
+    unsigned char bcd_code[]=
     {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 
-    do
+    while(1)
     {
-
         DISP1_SEL = 0;
         seven_segment_data = bcd_code[count1];
         delay_ms(2);
@@ -40,38 +39,37 @@ void main(void)
         delay_ms(2);
         DISP4_SEL = 1;
 
-        count0 += 1;
+        count0++;
 
         if(count0 >= 9)
         {
             count0 = 0;
-            count1 += 1;
+            count1++;
         }
 
         if(count1 >= 9)
         {
             count1 = 0;
-            count2 += 1;
+            count2++;
         }
 
         if(count2 >= 9)
         {
             count2 = 0;
-            count3 += 1;
+            count3++;
         }
 
         if(count3 >= 9)
         {
             count3 = 0;
-            count4 += 1;
+            count4++;
         }
 
         if(count4 >= 9)
         {
             count4 = 0;
         }
-
-    } while(1);
+    }
 }
 
 
