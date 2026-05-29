@@ -31,3 +31,42 @@ unsigned int j;
 		}
 	}
 }
+
+#=====================================================================================================================================================
+#multiple leds
+/* Program to interface LEDs and Switch using byte addressing */
+
+#include <reg51.h>
+
+#define led P0
+
+sbit sw = P2^0;      // Switch connected to P2.0
+
+void delay_ms(unsigned int);
+
+void main(void)
+{
+    led = 0x00;      // Initially all LEDs OFF
+
+    while(1)
+    {
+        if(sw == 0)      // If switch is pressed
+        {
+            led ^= 0x0F; // Toggle lower nibble LEDs
+            delay_ms(200);
+        }
+    }
+}
+
+void delay_ms(unsigned int i)
+{
+    unsigned int j;
+
+    while(i-- > 0)
+    {
+        for(j = 0; j < 500; j++)
+        {
+            ;
+        }
+    }
+}
